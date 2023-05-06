@@ -1,0 +1,22 @@
+img{
+
+    height: 70px;
+     
+     width: 70px;
+       
+     display: flex;
+        
+     justify-content: center;
+        
+        }
+        
+        
+        
+        
+        .CategoryListAnchor{
+       
+     text-decoration: none;
+      
+     color: black;
+        
+        }
