@@ -19,7 +19,7 @@ body {
 
 .navbar {
   height: 60px;
-  background-color: #726f67;
+  background-color: #131212;
   position: relative;
 }
 
@@ -30,8 +30,7 @@ body {
   display: none;
 }
 
-.nav-elements {
-}
+
 
 .nav-elements ul {
   display: flex;
@@ -46,12 +45,12 @@ body {
 .nav-elements ul a {
   font-size: 16px;
   font-weight: 400;
-  color: #2f234f;
+  color: #ded8ed;
   text-decoration: none;
 }
 
 .nav-elements ul a.active {
-  color: #574c4c;
+  color: #796c6c;
   font-weight: 500;
   position: relative;
 }
