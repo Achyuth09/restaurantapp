@@ -1,0 +1,73 @@
+.Contact {
+
+    padding: 50px 0;
+
+}
+
+
+
+.Contact h2 {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+}
+
+
+
+.Contact h3 {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.Contact p {
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+}
+
+
+
+.Contact address {
+
+    font-style: normal;
+
+}
+
+
+
+.Contact form {
+
+    margin-top: 30px;
+
+}
+
+
+
+.Contact button[type="submit"] {
+
+    margin-top: 20px;
+
+}
+
+
+
+.Contact a {
+
+    color: #007bff;
+
+}

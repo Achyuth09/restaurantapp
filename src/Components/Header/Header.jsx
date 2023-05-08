@@ -1,19 +1,30 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as Hamburger } from '../../assets/hamburger.svg'
 import { ReactComponent as Brand } from '../../assets/logo.svg'
 import '../../Styles/header.css'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom'
 
 //import MenuItems from '../Pages/MenuList'
 
 const Header = () => {
-  const [showNavbar, setShowNavbar] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
+  
+
+
+
+
+  
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar)
   }
+
+
 
   return (
 
@@ -61,29 +72,37 @@ const Header = () => {
         <div className={`nav-elements  ${showNavbar && 'active'}`}>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/home">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/blog">Blog</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
             <li>
               <NavLink to="/MenuList"> Menu List </NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/Aboutus">About</NavLink>
             </li>
             <li>
               <NavLink to="/login">Login</NavLink>
             </li>
             <li>
             <Form className="d-flex">
-            <Form.Control
+            <Form.Control 
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(event) => setSearchValue(event.target.value)}
+              value={searchValue}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success"onClick = {() => {
+
+                                console.log(searchValue);
+
+                                navigate("/dishByName", {state : {dishName : searchValue}})
+
+                            }}>Search</Button>
           </Form>
             </li>
 

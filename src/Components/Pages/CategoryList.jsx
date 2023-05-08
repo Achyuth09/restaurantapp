@@ -10,9 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 function CategoryItems() {
 
-    const location = useLocation();
+    const menuId = useLocation();
     const navigate = useNavigate();
-    const menuId = location;
     const [items, setItems] = useState([]);
     const [deletedItemId, setDeletedItemId] = useState(null);
     //const [selectedItem, setSelectedItem] = useState(null);
@@ -20,7 +19,7 @@ function CategoryItems() {
 
 
     useEffect(() => {
-        axios.get(`https://localhost:7205/api/Categories?menuId=${menuId.state.menuId}`)
+        axios.get(`https://localhost:7205/api/Categories/menuId=${menuId.state.menuId}`)
             .then(response => {
                 setItems(response.data);
                 console.log(response.data);
@@ -29,7 +28,7 @@ function CategoryItems() {
             .catch(error => {
                 console.log(error);
             });
-    },[deletedItemId]);
+    },[deletedItemId, menuId.state.menuId]);
 
 
     function handleEdit(event,item )  {
@@ -58,7 +57,7 @@ function CategoryItems() {
 
                 .catch(error => {
 
-                    console.error(`Error deleting item ${item.categoryId}:`, error);
+                    console.error(`Error deleting item ${item.catId}:`, error);
 
                 });
         }
@@ -112,6 +111,7 @@ function CategoryItems() {
         <div className="CategoryList">
 
             <div className="row">
+            <center> <h1 > Welcome to Category</h1></center>
                 {items.map(item => (
                     <div key={item.catd} className="col-md-4 mb-4">
                         <Card>
@@ -134,11 +134,11 @@ function CategoryItems() {
 
 <div className='col-md-4 mb-4'>
         <Card>
-        <Card.Img variant="top" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkeQ8Te5K2tD29NIgMhTb9FOz4eMHfkdAr0A&usqp=CAU"} alt={"Add Menu"} />
+        <Card.Img variant="top" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxSvzqqCxIRCkwENdT2nz3H4mpupNRDICerA&usqp=CAU"} alt={"Add Category"} />
         <Card.Body>
         <Card.Title className='title' onClick={e => {e.preventDefault(); handleAdd();}} >Add Category</Card.Title>
         <Card.Text>{"Add a new category item"}</Card.Text>
-        <Button style={{margin: "10px"}} variant="primary" onClick={e => {e.preventDefault(); handleDelete();}}>Add Category</Button>
+        <Button style={{margin: "10px"}} variant="primary" onClick={e => {e.preventDefault(); handleAdd();}}>Add Category</Button>
         </Card.Body>
         </Card>
         </div>

@@ -1,122 +1,84 @@
-import React, { useEffect, useState } from 'react';
-import '../../Styles/login.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { loginAPI } from '../storeLogin/actionLogin';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
-const Login = () => {
+import { Button, Form } from 'react-bootstrap';
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-//     const [password, setPassword] = useState("");
-//   const [username, setusername] = useState("");
-//   const [passwordError, setpasswordError] = useState("");
-//   const [usernameError, setusernameError] = useState("");
+import { Link, Route, useHistory, useNavigate } from 'react-router-dom';
+import { Container } from 'reactstrap';
 
-const [login, setLogin] = useState({
-    userId: "",
-    password: "",
-})
+//import './Login.css';
+//import { useNavigate } from 'react-router-dom';
 
-const handleLoginChange = (e) => {
-    const { name, value } = e.target;
-    setLogin({ ...login, [name]: value });
-}
+ 
 
-//   const handleValidation = (event) => {
-//     let formIsValid = true;
-//     const dispatch = useDispatch();
+function Login() {
 
-//     if (!username.match(/^[a-zA-Z]{8,22}$/)) {
-//       formIsValid = false;
-//       setusernameError("username Not Valid");
-//       return false;
-//     } else {
-//       setusernameError("");
-//       formIsValid = true;
-//     }
+ 
 
-//     if (!password.match(/^[a-zA-Z]{8,22}$/)) {
-//       formIsValid = false;
-//       setpasswordError(
-//         "Only Letters and length must best min 8 Chracters and Max 22 Chracters"
-//       );
-//       return false;
-//     } else {
-//       setpasswordError("");
-//       formIsValid = true;
-//     }
+    const [username, setUsername] = useState('');
 
-//     return formIsValid;
-//   };
+    const [password, setPassword] = useState('');
 
-  const loginSubmit = (e) => {
-    e.preventDefault();
-    dispatch(loginAPI(login));
-    console.log(login);
-    // handleValidation();
-  };
+    const navigate = useNavigate();
 
-  const { isAuth } = useSelector((state) => state.login);
-  console.log(isAuth);  
-  useEffect(() => {
-    if(isAuth) {
-        navigate("/home");
-    }
-  }, [navigate, isAuth]);
+ 
 
-    return (
-        <div className="container">
-        <div className="row d-flex justify-content-center">
-          <div className="col-md-4">
-            <form id="loginform" onSubmit={loginSubmit}>
-              <div className="form-group">
-                <label>Username</label>
-                <input
-                  type="userId"
-                  className="form-control"
-                  id="userId"
-                  name="userId"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                  value={login.userId}
-                  onChange={handleLoginChange}
-                />
-                {/* <small id="emailHelp" className="text-danger form-text">
-                  {usernameError}
-                </small> */}
-              </div>
-              <div className="form-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  className="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                  value={login.password}
-                  onChange={handleLoginChange}
-                />
-                {/* <small id="passworderror" className="text-danger form-text">
-                  {passwordError}
-                </small> */}
-              </div>
-              {/* <div className="form-group form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label className="form-check-label">Check me out</label>
-              </div> */}
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    );
+    const handleSubmit = (e) => {
+
+        if (username === 'admin' && password === 'admin123') {
+
+            console.log('Login successful!');
+
+            navigate("/home");
+
+        } else {
+
+            console.log('Invalid username or password');
+
+        }
+
+    };
+
+ 
+
+    return (
+  <Container>
+
+        <div className="container d-flex align-items-center justify-content-center vh-100">
+
+            <div className="card p-4">
+
+                <h1 className="mb-4">Login</h1>
+
+                <Form onSubmit={handleSubmit}>
+
+                    <Form.Group className="mb-3">
+
+                        <Form.Label> Username:</Form.Label>
+
+                        <Form.Control type="text" required placeholder='Enter Username' value={username} onChange={(e) => setUsername(e.target.value)} />
+
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+
+                        <Form.Label> Password: </Form.Label>
+
+                        <Form.Control type="password" required placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} />
+
+                    </Form.Group>
+
+                    <Button variant='primary' className='d-block mx-auto' type="submit">Login</Button>
+
+                </Form>
+
+            </div>
+
+        </div>
+</Container>
+    );
+
 };
+
+ 
 
 export default Login;

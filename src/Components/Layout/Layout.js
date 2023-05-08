@@ -2,8 +2,12 @@ import React, { Fragment } from 'react';
 import Header from '../Header/Header';
 import Routers from '../../Routes/Routers';
 import  Footer  from '../Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Layout = () => {
+
+    
+
     return (
         <Fragment>
             <Header />
@@ -15,4 +19,5 @@ const Layout = () => {
 
     );
 }
+
 export default Layout

@@ -63,7 +63,7 @@ function MenuItems() {
 
         
         console.log(`Clicked item ${item.menuId}`);
-        console.log(items.categories);
+        //console.log(items.categories);
 
        
         // Implement click logic here
@@ -81,6 +81,7 @@ function MenuItems() {
         <div className="MenuList">
 
             <div className="row">
+               <center> <h1 > Welcome to Menu</h1></center>
                 {items.map(item => (
                     <div key={item.menuId} className="col-md-4 mb-4">
                         <Card>
@@ -107,7 +108,7 @@ function MenuItems() {
                 
         <div className='col-md-4 mb-4'>
         <Card>
-        <Card.Img variant="top" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkeQ8Te5K2tD29NIgMhTb9FOz4eMHfkdAr0A&usqp=CAU"} alt={"Add Menu"} />
+        <Card.Img variant="top" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxSvzqqCxIRCkwENdT2nz3H4mpupNRDICerA&usqp=CAU"} alt={"Add Menu"} />
         <Card.Body>
         <Card.Title className='title' onClick={e => {e.preventDefault(); handleAdd();}} >Add Menu</Card.Title>
         <Card.Text>{"Add a new menu item"}</Card.Text>
